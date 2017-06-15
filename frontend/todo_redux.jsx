@@ -17,6 +17,7 @@ const applyMiddleware = (store, ...middlewares) => {
   let dispatch = store.dispatch
   middlewares.forEach(middleware => {
     dispatch = middleware(store)(dispatch) // function (action) {dispatch(action)}
+    // dispatch reassigned aka 'enhanced'and then passed as arg into next middleware
   })
   return Object.assign({}, store, {dispatch})
 }
